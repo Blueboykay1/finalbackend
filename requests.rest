@@ -1,0 +1,11 @@
+GET http://localhost:5000/users/62308c2f5ba714b0536d0753
+###
+POST http://localhost:5000/users/login
+Content-Type: application/json 
+
+{
+    "email": "aka@gma.com",
+    "password": "yessir"
+}
+###
+DELETE http://localhost:6000/users/6230982e2a0cd825c7f549f7
