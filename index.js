@@ -18,7 +18,7 @@ const flightRouter= require('./Routes/flightRoutes');
 app.use('/users', userRouter)
 app.use('/flights', flightRouter)
 // API routes
-app.get("/", (req, res, next) => {
+app.get("/", (req, res) => {
     res.send({
       message: "Welcome to the Generic Blog API"
     });

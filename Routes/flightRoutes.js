@@ -73,22 +73,4 @@ router.delete('/:id', getFlight,async (req, res)=> {
 
 })
 
-
-
-//middleware
-async function getFlight(req, res, next){
-    let flight
-    try{
-        flight = await Flight.findById(req.params.id)
-        if (flight == null){
-            return res.status(404).json({messae: 'Cannot Find Flight'})
-        }
-    }
-    catch(err){
-        return res.status(500).json({messae: err.message})
-    }
-    res.flight = flight
-    next()
-}
-
 module.exports= router;
