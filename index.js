@@ -25,4 +25,7 @@ app.get("/", (req, res) => {
   });
   app.set("Port", process.env.PORT||7000)
 
-app.listen(5000, ()=>console.log('server started'))
+  app.listen(app.get("Port"), (server) => {
+    console.info(`Server listen on port ${app.get("port")}`);
+    console.info("Press CTRL + C to close the server");
+  });
