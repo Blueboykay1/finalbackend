@@ -6,11 +6,7 @@ const fSchema = new mongoose.Schema({
     //     type: String,
     //     required: true
     // },
-    From: {
-        type: String,
-        required: true
-    },
-    to: {
+    Route: {
         type: String,
         required: true
     },
@@ -23,11 +19,14 @@ const fSchema = new mongoose.Schema({
         type: Date,
         required: true,  
     },
-    FCode: {
-        type: Date,
-        required: true,  
-    }    
+    // FCode: {
+    //     type: Date,
+    //     required: true,  
+    // } ,
+    FName:{
+        type: String,
+        required: true}   
 
 })
 
-module.exports = mongoose.model('tickets', fSchema)
+module.exports = mongoose.model('flights', fSchema)

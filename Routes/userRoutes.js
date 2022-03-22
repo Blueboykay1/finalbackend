@@ -67,24 +67,26 @@ router.post('/login', async (req, res, next) => {
 
 
 // UPDATE a user
-router.put("/:id", getUser, async (req, res, next) => {
-    const { email,  password } = req.body;
-    if (email) res.user.email = email;
+// router.put("/:id", getUser, async (req, res, next) => {
+//     const { email,  password } = req.body;
+//     if (email) res.user.email = email;
     
-    if (password) {
-      const salt = await bcrypt.genSaltSync(10);
-      const hashedPassword = await bcrypt.hash(password, salt);
-      res.user.password = hashedPassword;
-    }
+//     if (password) {
+//       const salt = await bcrypt.genSaltSync(10);
+//       const hashedPassword = await bcrypt.hash(password, salt);
+//       res.user.password = hashedPassword;
+//     }
   
-    try {
-      const updatedUser = await res.user.save();
-      res.status(201).send(updatedUser);
-    } catch (error) {
-      res.status(400).json({ message: error.message });
-    }
-  });
+//     try {
+//       const updatedUser = await res.user.save();
+//       res.status(201).send(updatedUser);
+//     } catch (error) {
+//       res.status(400).json({ message: error.message });
+//     }
+//   });
 
+
+  //get all users
 router.get('/', async (req, res)=> {
     try{
         const users= await User.find()

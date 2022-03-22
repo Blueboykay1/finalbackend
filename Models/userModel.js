@@ -13,11 +13,6 @@ const uSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
-    },
-    joinDate: {
-        type: Date,
-        required: true,
-        default: Date.now
     }
 })
 
