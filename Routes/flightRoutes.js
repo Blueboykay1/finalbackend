@@ -1,7 +1,7 @@
 const express= require('express');
 const router= express.Router()
 const flight= require('../Models/flightModel')
-const { getFlight } = require("../middleware/retriever");
+const getFlight  = require("../middleware/retriever");
 //Get all
 router.get('/', async (req, res)=> {
     try{
@@ -73,4 +73,4 @@ router.delete('/:id', getFlight,async (req, res)=> {
 
 })
 
-// module.exports= router;
+module.exports= router;

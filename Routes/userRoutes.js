@@ -4,7 +4,7 @@ const express = require("express");
 const User = require("../Models/userModel");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const { getUser } = require("../middleware/retriever");
+const  getUser = require("../middleware/retriever");
 
 const router = express.Router();
 

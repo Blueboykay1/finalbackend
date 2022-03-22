@@ -20,7 +20,7 @@ app.use('/flights', flightRouter)
 // API routes
 app.get("/", (req, res) => {
     res.send({
-      message: "Welcome to the Generic Blog API"
+      message: "Welcome to the Affordable flights API"
     });
   });
 
