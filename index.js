@@ -23,5 +23,6 @@ app.get("/", (req, res) => {
       message: "Welcome to the Affordable flights API"
     });
   });
+  app.set("Port", process.env.PORT||7000)
 
 app.listen(5000, ()=>console.log('server started'))
