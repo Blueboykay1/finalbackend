@@ -12,7 +12,7 @@ async function getUser(req, res, next) {
   }
   res.user = user;
   next();
-}
+};
 
 async function getFlight(req, res, next) {
   let flight;
@@ -26,4 +26,4 @@ async function getFlight(req, res, next) {
   next();
 }
 
-module.exports = { getUser, getFlight };
+module.exports =  {getUser, getFlight };
