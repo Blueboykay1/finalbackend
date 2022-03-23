@@ -2,30 +2,36 @@ const mongoose  = require("mongoose");
 
 
 const fSchema = new mongoose.Schema({
-    // name: {
-    //     type: String,
-    //     required: true
-    // },
-    Route: {
+    
+    route: {
         type: String,
         required: true
     },
-    DepDate: {
+    depdate: {
         type: Date,
         required: true,
         
     },
-    RetDate: {
+    retdate: {
         type: Date,
-        required: true,  
+        required: false,  
     },
-    // FCode: {
-    //     type: Date,
-    //     required: true,  
-    // } ,
-    FName:{
+   
+    brand:{
         type: String,
-        required: true}   
+        required: true}, 
+    price:{
+        type: String,
+        required: true
+    } , 
+    deptime: {
+        type: String,
+        required: false
+    },
+    rettime: {
+        type: String,
+        required: false
+    }
 
 })
 

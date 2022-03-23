@@ -1,4 +1,4 @@
-// require('dotenv').config()
+require('dotenv').config()
 const express= require('express');
 const app = express()
 const mongoose = require('mongoose')
@@ -26,6 +26,6 @@ app.get("/", (req, res) => {
   app.set("Port", process.env.PORT||7000)
 
   app.listen(app.get("Port"), (server) => {
-    console.info(`Server listen on port ${app.get("port")}`);
+    console.info(`Server listen on port ${app.get("Port")}`);
     console.info("Press CTRL + C to close the server");
   });

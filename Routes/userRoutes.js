@@ -1,4 +1,4 @@
-//require("dotenv").config;
+require("dotenv").config();
 
 const express = require("express");
 const User = require("../Models/userModel");
@@ -16,7 +16,13 @@ router.post('/register', async (req, res)=> {
     
     const user = new User({
         email: req.body.email,
-        password: hashedPassword  })
+        password: hashedPassword,
+        full_name: req.body.full_name,
+        role: req.body.role,
+        contact_number: req.body.contact_number,
+        
+        
+        })
 
         try {
             const newUser = await user.save();
@@ -32,9 +38,8 @@ router.post('/register', async (req, res)=> {
             }
           } catch (error) {
             res.status(400).json({ message: error.message });
-          }
-    
-   
+          } 
+
 
 })
 
@@ -62,8 +67,30 @@ router.post('/login', async (req, res, next) => {
   });
   
 
+//ADMIN LOGIN
+router.post('/admin/login', async (req, res, next) => {
+  const { email, password } = req.body;
+  const user = await User.findOne({ email });
 
+  if (!user) res.status(404).json({ message: "Could not find user" });
 
+  if (user.role!="Admin") res.status(404).json({ message: "You are not an Admin " });
+  if (await bcrypt.compare(password, user.password)) {
+    try {
+      const access_token = jwt.sign(
+        JSON.stringify(user),
+        process.env.ACCESS_TOKEN
+      );
+      res.status(201).json({ jwt: access_token });
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  } else {
+    res
+      .status(400)
+      .json({ message: "Email & password do not match" });
+  }
+});
 
 
 // UPDATE a user

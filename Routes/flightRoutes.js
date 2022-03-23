@@ -1,6 +1,9 @@
+require("dotenv").config;
+
+
 const express= require('express');
 const router= express.Router()
-const flight= require('../Models/flightModel')
+const Flight= require('../Models/flightModel')
 const {getFlight}  = require("../middleware/retriever");
 //Get all
 router.get('/', async (req, res)=> {
@@ -23,12 +26,16 @@ router.get('/:id', getFlight,(req, res)=> {
 
 //Create One
 
-router.post('/', async (req, res)=> {
+router.post('/register', async (req, res)=> {
     const flight = new Flight({
+        d: Date(),
         route: req.body.route,
-        fname: req.body.fname,
+        brand: req.body.brand,
         depdate: req.body.depdate,
-        retdate: req.body.retdate })
+        retdate: req.body.retdate ,
+        deptime: req.body.deptime,
+        rettime: req.body.rettime , 
+        price: req.body.price })
 
        
     try{ 
@@ -60,6 +67,7 @@ router.post('/', async (req, res)=> {
 // //     }
 
 // // })
+
 //Delete One
 router.delete('/:id', getFlight,async (req, res)=> {
     try{

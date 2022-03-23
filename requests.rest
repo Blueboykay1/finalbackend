@@ -1,11 +1,24 @@
-GET http://localhost:5000/users/62308c2f5ba714b0536d0753
+DELETE  http://localhost:7000/users/623b0841b17675c65086e2e6
 ###
-POST http://localhost:5000/users/login
+POST http://localhost:7000/users/register
 Content-Type: application/json 
 
-{
-    "email": "aka@gma.com",
-    "password": "yessir"
-}
+{  "email": "ak@gmz.com",
+    "password": "password",
+    "full_name": "Akha Kombora",
+    "role": "admin",
+    "contact_number": "0814937507"}
+        
 ###
-DELETE http://localhost:6000/users/6230982e2a0cd825c7f549f7
+Post http://localhost:7000/flights/register
+Content-Type: application/json
+
+{
+    "route": "Cape Town - Jozi",
+    "brand": "SA Airways",
+    "depdate": "2022/03/27",
+    "retdate": "2022/03/29" ,
+    "price": "R500",
+    "deptime": "17:00",
+    "rettime": "17:00",
+}
