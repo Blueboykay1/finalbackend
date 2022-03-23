@@ -3,6 +3,9 @@ const express= require('express');
 const app = express()
 const mongoose = require('mongoose')
 const jwt= require('jsonwebtoken')
+const cors= require("cors")
+
+app.use( cors())
 
 mongoose.connect(process.env.DatabaseURL, {useNewUrlparser: true});
 const db= mongoose.connection;
@@ -23,7 +26,7 @@ app.get("/", (req, res) => {
       message: "Welcome to the Affordable flights API"
     });
   });
-  app.set("Port", process.env.PORT||7000)
+  app.set("Port", process.env.PORT||8000)
 
   app.listen(app.get("Port"), (server) => {
     console.info(`Server listen on port ${app.get("Port")}`);
