@@ -49,6 +49,7 @@ router.post('/login', async (req, res, next) => {
     const user = await User.findOne({ email });
   
     if (!user) res.status(404).json({ message: "Could not find user" });
+    console.log(password, user.password)
     if (await bcrypt.compare(password, user.password)) {
       try {
         const access_token = jwt.sign(

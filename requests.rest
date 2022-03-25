@@ -10,7 +10,7 @@ Content-Type: application/json
     "contact_number": "0814937507"}
         
 ###
-Post http://localhost:7000/flights/register
+POST  http://localhost:8000/flights/register
 Content-Type: application/json
 
 {
@@ -21,7 +21,10 @@ Content-Type: application/json
     "price": "R500",
     "deptime": "17:00",
     "rettime": "17:00",
-}
+    "category": "One-Way"
+    }
+
+
 
 
 

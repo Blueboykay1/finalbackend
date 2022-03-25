@@ -35,7 +35,9 @@ router.post('/register', async (req, res)=> {
         retdate: req.body.retdate ,
         deptime: req.body.deptime,
         rettime: req.body.rettime , 
-        price: req.body.price })
+        price: req.body.price,
+        category: req.body.category
+     })
 
        
     try{ 
