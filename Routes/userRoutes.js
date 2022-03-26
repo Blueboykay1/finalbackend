@@ -52,7 +52,7 @@ router.patch('/login', async (req, res, next) => {
     console.log(password, user.password)
     if (await bcrypt.compare(password, user.password)) {
       try {
-        const access_token = jwt.sign(
+        const ACCESS_TOKEN = jwt.sign(
           JSON.stringify(user),
           process.env.ACCESS_TOKEN
         );
@@ -69,7 +69,7 @@ router.patch('/login', async (req, res, next) => {
   
 
 //ADMIN LOGIN
-router.post('/admin/login', async (req, res, next) => {
+router.patch('/admin/login', async (req, res, next) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email });
 
