@@ -5,6 +5,7 @@ const express= require('express');
 const router= express.Router()
 const Flight= require('../Models/flightModel')
 const {getFlight}  = require("../middleware/retriever");
+const auth = require("../middleware/auth")
 //Get all
 router.get('/', async (req, res)=> {
     try{
@@ -53,22 +54,25 @@ router.post('/register', async (req, res)=> {
 })
 
 // // Update One
-// // router.patch('/:id', getUser, async (req, res)=> {
-// //     if (req.body.email != null){
-// //         res.user.email =req.body.email
-// //     }
-// //     if (req.body.password != null){
-// //         res.user.password =req.body.password
-// //     }
-// //     try{
-// //         const updatedUser = await res.user.save()
-// //         res.json(updatedUser)
-// //     }
-// //     catch(err){
-// //         res.status(400).json({message: err.message})
-// //     }
+router.put("/:id", [auth, getFlight], async (req, res, next) => {
+  if (req.user._id !== res.flight.author)
+  res
+    .status(400)
+    .json({ message: "You do not have the permission to update this post" });
+const { route, depdate,retdate, price, deptime,rettime, category } = req.body;
+if (title) res.post.title = title;
+if (body) res.post.body = body;
+if (img) res.post.img = img;
 
-// // })
+try {
+  const updatedPost = await res.post.save();
+  res.status(201).send(updatedPost);
+} catch (error) {
+  res.status(400).json({ message: error.message });
+}
+});   
+
+
 
 //Delete One
 router.delete('/:id', getFlight,async (req, res)=> {

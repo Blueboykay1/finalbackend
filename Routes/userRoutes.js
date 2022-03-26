@@ -20,7 +20,8 @@ router.post('/register', async (req, res)=> {
         full_name: req.body.full_name,
        
         contact_number: req.body.contact_number,
-        
+        about: req.body.about,
+        avatar: req.body.avatar 
         
         })
 
@@ -95,23 +96,26 @@ router.patch('/admin/login', async (req, res, next) => {
 
 
 // UPDATE a user
-// router.put("/:id", getUser, async (req, res, next) => {
-//     const { email,  password } = req.body;
-//     if (email) res.user.email = email;
-    
-//     if (password) {
-//       const salt = await bcrypt.genSaltSync(10);
-//       const hashedPassword = await bcrypt.hash(password, salt);
-//       res.user.password = hashedPassword;
-//     }
-  
-//     try {
-//       const updatedUser = await res.user.save();
-//       res.status(201).send(updatedUser);
-//     } catch (error) {
-//       res.status(400).json({ message: error.message });
-//     }
-//   });
+router.put("/:id", getUser, async (req, res, next) => {
+
+  const { full_name, password, contact_number, about, avatar } = req.body;
+  if (full_name) res.user.full_name = full_name;
+  if (contact_number) res.user.contact_number = contact_number;
+  if (avatar) res.user.avatar = avatar;
+  if (about) res.user.about = about;
+  if (password) {
+    const salt = await bcrypt.genSalt();
+    const hashedPassword = await bcrypt.hash(password, salt);
+    res.user.password = hashedPassword;
+  }
+
+  try {
+    const updatedUser = await res.user.save();
+    res.status(201).send(updatedUser);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
 
 
   //get all users

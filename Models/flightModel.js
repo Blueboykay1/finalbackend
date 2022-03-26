@@ -8,12 +8,12 @@ const fSchema = new mongoose.Schema({
         required: true
     },
     depdate: {
-        type: Date,
+        type: String,
         required: true,
         
     },
     retdate: {
-        type: Date,
+        type: String,
         required: false,  
     },
    
