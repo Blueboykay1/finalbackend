@@ -44,7 +44,7 @@ router.post('/register', async (req, res)=> {
 })
 
 //login
-router.post('/login', async (req, res, next) => {
+router.patch('/login', async (req, res, next) => {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
   
@@ -56,7 +56,7 @@ router.post('/login', async (req, res, next) => {
           JSON.stringify(user),
           process.env.ACCESS_TOKEN
         );
-        res.status(201).json({ jwt: access_token });
+        res.status(201).json({ jwt: ACCESS_TOKEN });
       } catch (error) {
         res.status(500).json({ message: error.message });
       }
